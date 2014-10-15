@@ -90,3 +90,6 @@ Style/CyclomaticComplexity:
 
 Style/StringLiterals:
   Enabled: false
+
+Lint/UnusedMethodArgument:
+  Enabled: false
