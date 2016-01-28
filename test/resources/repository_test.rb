@@ -121,8 +121,9 @@ module Resources
       }
       response = @resource.regenerate_applicability(criteria)
       assert_equal 202, response.code
-      task = RepositorySupport.new.wait_on_response(response)
-      assert 'finished', task.first['state']
+      assert response.key?("group_id")
+      summary = RepositorySupport.new.wait_on_task_group(response)
+      assert summary["total"], summary['finished']
     end
   end
 

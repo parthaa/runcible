@@ -154,10 +154,9 @@ module Extensions
     end
 
     def test_generate_applicability_by_ids
-      response = @extension.regenerate_applicability_by_ids([@consumer_id])
-
-      tasks = assert_async_response(response)
-      assert_equal 'finished', tasks.first['state']
+      response = @extension.regenerate_applicability_by_ids([RepositorySupport.repo_id])
+      assert response.key?("group_id")
+      assert_async_response(response)
     end
   end
 
